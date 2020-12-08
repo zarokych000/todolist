@@ -1,0 +1,25 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "simple todolist, first project",
+  "private": true,
+  "main": "index.js",
+  "keywords": [
+    "html",
+    "css",
+    "js",
+    "webpack",
+    "git"
+  ],
+  "author": "Ruslan <rusvolk97i@gmail.com>",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack-cli": "^4.2.0",
+    "webpack": "^5.9.0"
+  },
+  "scripts": {
+    "test": "webpack --mode development",
+    "watch": "webpack --mode watch"
+  }
+}
