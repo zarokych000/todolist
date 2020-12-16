@@ -3,24 +3,50 @@
 const input = document.querySelector('.input');
 const ul = document.querySelector('.ul');
 const control = document.querySelector('.control-panel');
+let storage = {};
+let max = 0;
 
-for(let i = 0; localStorage.key(i); i++){
-  const tempItem = document.createElement('li');
-  tempItem.classList.add('tdl-item');
-  const key = localStorage.key(i);
-  const itemText = localStorage.getItem(key);
-  tempItem.innerHTML = `
-  <label>
-    <input class="checkbox" type="checkbox">
-    <span data-local='${key}' class="text">${itemText}</span>
-    <img class="crist hide" src="./img/crist.png" alt="crist">
-  </label>
-  `;
-  ul.insertBefore(tempItem, control);
-  console.log('Ключ номер: ', i, localStorage.key(i));
-  checkboxStroke(ul);
-  deleteFromList(tempItem);
-  counter();
+if(localStorage.getItem('Ukey')){
+  storage = JSON.parse(localStorage.getItem('Ukey'));
+  recount();
+}
+
+function recount(){
+  let res = [];
+    for(let [key ,index] of Object.entries(storage)){
+      res.push(index);
+      for(let i = 0; i < res.length; i++){
+        storage[key] = i;
+      }
+      let convers = JSON.stringify(storage);
+      localStorage.setItem(`Ukey`, convers);
+    }
+
+  max = Math.max(...res);
+
+}
+
+
+for(let j = 0; j <= max ; j++){
+  for(let [key ,index] of Object.entries(storage)){
+    if(index == j){
+      console.log(index, j);
+        let inner = localStorage.getItem(key);
+        const tempItem = document.createElement('li');
+        tempItem.classList.add('tdl-item');
+        tempItem.innerHTML = `
+        <label>
+          <input class="checkbox" type="checkbox">
+          <span data-local='${key}' class="text">${inner}</span>
+          <img class="crist hide" src="./img/crist.png" alt="crist">
+        </label>
+        `;
+        ul.insertBefore(tempItem, control);
+        checkboxStroke(ul);
+        deleteFromList(tempItem);
+        counter();
+    }
+  }
 }
 
 counter();
@@ -28,11 +54,10 @@ counter();
 input.addEventListener('change', (event) => {
   buildUl(event);
 });
-let obj = {};
 
 function buildUl(event){
   const element = document.createElement('li');
-  const key = (event.target.value).slice(0, 5);
+  const key = (event.target.value).slice(0, 8);
   element.classList.add('tdl-item');
   element.innerHTML = `
     <label>
@@ -50,9 +75,15 @@ function buildUl(event){
   counter();
 
   const todoitems = document.querySelectorAll('.tdl-item');
+  
   todoitems.forEach((item, index) =>{
-      localStorage.setItem(`${key}`, [index, event.target.value]);
+    storage[key] = (index);
+    let convers = JSON.stringify(storage);
+    localStorage.setItem(`Ukey`, convers);
+    recount();
   });
+
+  localStorage.setItem(`${key}`, event.target.value);
 
   event.target.value = '';
 }
@@ -68,6 +99,10 @@ function deleteFromList(element){
   cros.forEach((item) =>{
     item.addEventListener('click', (event) =>{
       localStorage.removeItem(event.target.previousElementSibling.dataset.local);
+
+      delete storage[event.target.previousElementSibling.dataset.local];
+      let convers = JSON.stringify(storage);
+      localStorage.setItem('Ukey', convers);
 
       event.target.parentElement.parentElement.remove();
 
@@ -161,6 +196,9 @@ btnClearCompleted.addEventListener('click', () =>{
   localItems.forEach(item =>{
     if(item.classList.contains('pop')){
       localStorage.removeItem(item.firstElementChild.children[1].dataset.local);
+      delete storage[item.firstElementChild.children[1].dataset.local];
+      let convers = JSON.stringify(storage);
+      localStorage.setItem('Ukey', convers);
       item.remove();
       counter();
     }
