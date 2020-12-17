@@ -49,7 +49,7 @@ function deleteFromList(element){
     e.target.firstElementChild.lastElementChild.classList.remove('hide');
   });
   element.addEventListener('mouseleave', (e) =>{
-    e.target.firstElementChild.lastElementChild.classList.add('hide');  
+    e.target.firstElementChild.lastElementChild.classList.add('hide');
   });
   cros.forEach((item) =>{
     item.addEventListener('click', (event) =>{
@@ -106,6 +106,9 @@ function recount(){
     for(let [key ,index] of Object.entries(storage)){
       res.push(index);
       for(let i = 0; i < res.length; i++){
+        if(i != (res.length - 1)){
+          continue;
+        }
         storage[key] = i;
       }
       converseToStorage();
