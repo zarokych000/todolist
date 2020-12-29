@@ -7,26 +7,28 @@
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="content-box">
-            <h1 class="title">todos</h1>
-            <ul class="ul">
-                <li><input class="input" type="text" placeholder="What needs to be done?">
-                    <img class ="arrow" src="img/arrowdown.png" alt=""></li>
-                <li class="control-panel">
-                    <div class="counter">
-                        <div class="total">item left</div>
-                    </div>
-                    <div class="control-block">
-                        <button class="all">All</button>
-                        <button class="active">Active</button>
-                        <button class="complete">Completed</button>
-                    </div>
-                    <button class="clear"">Clear completed</button>
-                </li>
-            </ul>
-        </div>
+  <div class="container">
+    <div class="content-box">
+      <h1 class="title">todos</h1>
+      <ul class="ul">
+        <li><input class="input" type="text" placeholder="What needs to be done?">
+          <img class ="arrow" src="img/arrowdown.png" alt=""></li>
+        <li class="control-panel">
+          <div class="counter">
+            <div class="total">item left</div>
+          </div>
+          <div class="control-block">
+            <button class="all active-btn">All</button>
+            <button class="active">Active</button>
+            <button class="complete">Completed</button>
+          </div>
+            <div class="clear-wrapper">
+              <button class="clear hide">Clear completed</button>
+            </div>
+        </li>
+      </ul>
     </div>
-    <script src="js/index.js"></script>
+  </div>
+  <script src="js/index.js"></script>
 </body>
 </html>

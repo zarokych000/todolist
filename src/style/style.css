@@ -68,6 +68,7 @@
 }
 
 .tdl-item{
+    display: flex;
     padding-left: 45px;
     border: 1px solid black;
     width: 500px;
@@ -110,4 +111,24 @@
 
 .show{
     display: block;
+}
+
+.text {
+  display: block;
+  width: 100%;
+}
+
+.changer{
+  width: 100%;
+  font-size: 24px;
+}
+
+
+.clear-wrapper{
+  width: 100%;
+  max-width: 110px;
+}
+
+.active-btn{
+  background-color: #ff9e9e;
 }
