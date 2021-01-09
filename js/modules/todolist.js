@@ -333,6 +333,12 @@ function todo(){
       showClearCompleted();
     }
   }
+
+  document.addEventListener('click', (e) =>{
+    if(e.target.tagName == 'LABEL'){
+      e.target.classList.toggle('checked');
+    }
+  });
 }
 
 export default todo;
