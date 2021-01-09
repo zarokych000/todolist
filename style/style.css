@@ -134,29 +134,3 @@
 }
 
 
-
-input[type=checkbox]{
-  display: none;
-}
-
-label:before{
-  content:"\2714";
-  border: 2px solid #000;
-  border-radius: 100%;
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  vertical-align: middle;
-  margin-right: 5px; 
-  color: transparent;
-}
-
-label:before {
-  background-color: grey;
-}
-
-
-label.checked::before{
-  background-color: red;
-}
-
