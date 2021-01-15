@@ -32,7 +32,7 @@ function todo(){
   });
 
   function buildUl(event){
-    const key = (event.target.value).slice(0, 8);
+    const key = (event.target.value).slice(0, 8) + 'a';
     printList(key, event.target.value);
     const panel = document.querySelector('.control-panel');
     panel.classList.remove('hide');
@@ -143,9 +143,10 @@ function todo(){
     const element = document.createElement('li');
     element.classList.add('tdl-item');
     element.innerHTML = `
-    <label>
+    <label class="label">
       <input class="checkbox" type="checkbox">
-      <img class="crist hide" src="./img/crist.png" alt="crist">
+      <span class="fake"></span>
+      <img class="crist hide" src="./img/Cancel.png" alt="crist">
     </label>
     <span data-local='${key}' class="text">${text}</span>
     `;
@@ -265,6 +266,7 @@ function todo(){
         counter();
       }
     });
+    btnClearCompleted.classList.add('hide');
   });
 
   const arrow = document.querySelector('.arrow');
